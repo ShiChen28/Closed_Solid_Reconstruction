@@ -10,10 +10,13 @@
 #include <filesystem>
 #include <numeric> 
 
+#include "Utils.h"
 
 
 int main(int argc, char* argv[])
-{	
+{
+    std::string dataDirPath = "..\\data\\";
+    ProcessAllStpAndExportsFragmentedFaces(dataDirPath);
 
-	return 0;
+    return 0;
 }
