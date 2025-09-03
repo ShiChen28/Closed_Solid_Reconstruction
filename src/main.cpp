@@ -15,8 +15,12 @@
 
 int main(int argc, char* argv[])
 {
+    /*
     std::string dataDirPath = "..\\data\\";
     ProcessAllStpAndExportsFragmentedFaces(dataDirPath);
+    */
 
+    std::string inputShapePath = "..\\data\\delete_model_3.stp";
+    ProcessStpAndCalculateWindingNumber(inputShapePath);
     return 0;
 }

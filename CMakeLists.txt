@@ -39,18 +39,10 @@ set(OpenCASCADE_WITH_D3D OFF)
 # Eigen3 setup
 find_package(Eigen3 REQUIRED)
 
-# Get Ceres Solver 
-find_package(Ceres REQUIRED)
-include_directories(${CERES_INCLUDE_DIRS})
 
 #nlohmann json
 find_package(nlohmann_json CONFIG REQUIRED)
 
-# NLopt setup
-find_package(NLopt REQUIRED)
-
-# PCL setup
-find_package(PCL REQUIRED)
 
 # LBFGSpp
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/lib/LBFGSpp/include")
@@ -106,12 +98,11 @@ foreach(LIB ${OpenCASCADE_LIBRARIES})
     target_link_libraries(BRepReCon PRIVATE ${OpenCASCADE_LIBRARY_DIR}/${LIB}.lib)
 endforeach()
 
+# libigl
+find_package(libigl REQUIRED QUIET)
+
 # Link additional libraries
 target_link_libraries(BRepReCon PRIVATE 
-    ${CGAL_LIBRARIES}
-    ${CERES_LIBRARIES}
-    ${PCL_LIBRARIES}
-    ${NLOPT_LIBRARIES}
     ZLIB::ZLIB
     nlohmann_json::nlohmann_json
 )
